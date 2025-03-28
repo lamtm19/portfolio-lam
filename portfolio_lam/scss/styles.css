@@ -1,0 +1,367 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #68a0d3, #55c9c9);
+  height: 100vh;
+  overflow: hidden;
+  padding: 20px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  color: #FFFFFF;
+  font-size: 14px;
+}
+.status-bar .time {
+  font-weight: bold;
+}
+.status-bar .right-icons {
+  display: flex;
+  gap: 5px;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: auto;
+  margin-bottom: 10px;
+}
+.dots .dot {
+  width: 8px;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+}
+.dots .dot.active {
+  background-color: #FFFFFF;
+}
+
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 20px;
+  padding: 20px 10px;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #FF3B30;
+  color: #FFFFFF;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 999;
+}
+
+.folder-popup {
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.app:active {
+  transform: scale(0.95);
+}
+.app .app-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+  position: relative;
+  overflow: hidden;
+}
+.app .app-icon img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 15px;
+}
+.app .app-name {
+  color: #FFFFFF;
+  font-size: 12px;
+  text-align: center;
+  max-width: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app[data-app=cloud-folder] .app-icon {
+  border-radius: 22px;
+  padding: 10px;
+  background-color: rgba(50, 50, 70, 0.8);
+}
+
+.app[data-app=instagram] .app-icon {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.app[data-app=snapchat] .app-icon {
+  background-color: #FFFC00;
+}
+
+.app[data-app=tiktok] .app-icon {
+  background-color: #000000;
+}
+
+.dock {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  padding: 10px;
+  display: flex;
+  gap: 25px;
+  z-index: 10;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+.dock .app .app-icon {
+  margin-bottom: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.dock .app .app-icon:active {
+  transform: scale(0.9);
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.85);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  width: 80%;
+  border-radius: 13px;
+  padding: 20px;
+  text-align: center;
+  display: none;
+  z-index: 1000;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.popup h2 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #000000;
+  font-weight: 500;
+}
+.popup button {
+  background-color: #007AFF;
+  color: #FFFFFF;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+}
+.popup button:active {
+  background-color: #0062cc;
+}
+
+.folder-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.85);
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+  border-radius: 25px;
+  width: 280px;
+  min-height: 280px;
+  padding: 15px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+.folder-popup .folder-title {
+  background-color: rgba(50, 50, 70, 0.8);
+  color: #FFFFFF;
+  padding: 8px 15px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.folder-popup .folder-title span {
+  font-size: 16px;
+  font-weight: 500;
+}
+.folder-popup .folder-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 20px;
+  padding: 10px 5px;
+  flex: 1;
+}
+.folder-popup .folder-content .folder-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+.folder-popup .folder-content .folder-app.fourth-app {
+  grid-row: 2;
+  grid-column: 1;
+}
+.folder-popup .folder-content .folder-app .folder-app-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+.folder-popup .folder-content .folder-app .folder-app-name {
+  color: #000000;
+  font-size: 12px;
+  text-align: center;
+}
+.folder-popup .folder-dots {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: auto;
+  padding-top: 10px;
+}
+.folder-popup .folder-dots .folder-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.folder-popup .folder-dots .folder-dot.active {
+  background-color: #FFFFFF;
+}
+.folder-popup .folder-dots .folder-dot:not(.active) {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 374px) {
+  .app-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .app-icon {
+    width: calc(60px - 15px);
+    height: calc(60px - 15px);
+  }
+  .app-name {
+    font-size: 10px;
+  }
+  .dock {
+    gap: 15px;
+    padding: 5px;
+  }
+  .folder-popup {
+    width: 250px;
+    min-height: 250px;
+  }
+}
+@media (min-width: 375px) and (max-width: 767px) {
+  .app-grid {
+    gap: 15px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .app-grid {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px 25px;
+  }
+  .app-icon {
+    width: calc(60px + 10px);
+    height: calc(60px + 10px);
+  }
+  .app-name {
+    font-size: 14px;
+  }
+  .folder-popup {
+    width: 350px;
+    min-height: 350px;
+  }
+}
+@media (min-width: 1024px) {
+  .app-grid {
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 25px;
+    padding: 25px;
+  }
+  .app-icon {
+    width: calc(60px + 20px);
+    height: calc(60px + 20px);
+  }
+  .app-name {
+    font-size: 14px;
+  }
+  .dock {
+    padding: 15px;
+    gap: 25px;
+  }
+  .folder-popup {
+    width: 400px;
+    min-height: 400px;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .popup {
+    background-color: rgba(28, 28, 30, 0.85);
+  }
+  .popup h2 {
+    color: #FFFFFF;
+  }
+  .folder-popup {
+    background-color: rgba(28, 28, 30, 0.85);
+  }
+  .folder-popup .folder-app-name {
+    color: #FFFFFF;
+  }
+}/*# sourceMappingURL=styles.css.map */

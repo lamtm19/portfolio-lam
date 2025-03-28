@@ -1,0 +1,66 @@
+// Style des applications
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform $transition-speed;
+    
+    &:active {
+        transform: scale(0.95);
+    }
+    
+    // Icône de l'application
+    .app-icon {
+        width: $app-icon-size;
+        height: $app-icon-size;
+        border-radius: $border-radius-lg;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: $padding-xs;
+        position: relative;
+        overflow: hidden;
+        
+        // Pour les images importées
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: $border-radius-lg;
+        }
+    }
+    
+    // Nom de l'application
+    .app-name {
+        color: $white;
+        font-size: $font-size-sm;
+        text-align: center;
+        max-width: $app-icon-size;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+// Style spécifique pour le dossier Portfolio
+.app[data-app="cloud-folder"] {
+    .app-icon {
+        border-radius: $border-radius-xl;
+        padding: $padding-sm;
+        background-color: $portfolio-background;
+    }
+}
+
+// Styles spécifiques des applications réseaux sociaux
+.app[data-app="instagram"] .app-icon {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, $app-pink 60%, #285AEB 90%);
+}
+
+.app[data-app="snapchat"] .app-icon {
+    background-color: $app-snapchat;
+}
+
+.app[data-app="tiktok"] .app-icon {
+    background-color: $black;
+}

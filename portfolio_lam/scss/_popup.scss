@@ -1,0 +1,134 @@
+// Popup de mise à jour iOS
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba($white, $popup-opacity);
+    backdrop-filter: blur(10px);
+    width: 80%;
+    border-radius: $border-radius-md;
+    padding: $padding-lg;
+    text-align: center;
+    display: none;
+    z-index: $z-index-popup;
+    box-shadow: 0 5px 15px rgba($black, 0.1);
+    
+    h2 {
+        font-size: $font-size-lg;
+        margin-bottom: $padding-md;
+        color: $black;
+        font-weight: 500;
+    }
+    
+    button {
+        background-color: $app-blue;
+        color: $white;
+        border: none;
+        padding: 8px $padding-lg;
+        border-radius: $border-radius-sm;
+        margin-top: $padding-sm;
+        font-size: $font-size-md;
+        cursor: pointer;
+        width: 100%;
+        
+        &:active {
+            background-color: darken($app-blue, 10%);
+        }
+    }
+}
+
+// Style du dossier Portfolio ouvert
+.folder-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba($white, $popup-opacity);
+    backdrop-filter: blur(20px);
+    border-radius: $padding-xl;
+    width: 280px;
+    min-height: 280px;
+    padding: $padding-md;
+    z-index: $z-index-popup;
+    display: flex;
+    flex-direction: column;
+    
+    // Barre de titre
+    .folder-title {
+        background-color: $portfolio-background;
+        color: $white;
+        padding: 8px $padding-md;
+        border-radius: $border-radius-lg;
+        margin-bottom: $padding-md;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        span {
+            font-size: $font-size-lg;
+            font-weight: 500;
+        }
+    }
+    
+    // Contenu du dossier
+    .folder-content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto auto;
+        gap: $padding-lg;
+        padding: $padding-sm $padding-xs;
+        flex: 1;
+        
+        .folder-app {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            
+            &.fourth-app {
+                grid-row: 2;
+                grid-column: 1;
+            }
+            
+            .folder-app-icon {
+                width: $app-icon-size;
+                height: $app-icon-size;
+                border-radius: $border-radius-lg;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: $padding-xs;
+            }
+            
+            .folder-app-name {
+                color: $black;
+                font-size: $font-size-sm;
+                text-align: center;
+            }
+        }
+    }
+    
+    // Indicateurs de page
+    .folder-dots {
+        display: flex;
+        justify-content: center;
+        gap: $padding-xs;
+        margin-top: auto;
+        padding-top: $padding-sm;
+        
+        .folder-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: $border-radius-round;
+            
+            &.active {
+                background-color: $white;
+            }
+            
+            &:not(.active) {
+                background-color: rgba($white, 0.5);
+            }
+        }
+    }
+}

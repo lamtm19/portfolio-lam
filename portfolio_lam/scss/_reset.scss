@@ -1,0 +1,57 @@
+// Reset de base
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $font-family;
+}
+
+// Corps principal
+body {
+    background: linear-gradient(135deg, $background-gradient-start, $background-gradient-end);
+    height: 100vh;
+    overflow: hidden;
+    padding: $padding-lg;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+// Barre d'état
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: $padding-xs $padding-sm;
+    color: $white;
+    font-size: $font-size-md;
+    
+    .time {
+        font-weight: bold;
+    }
+    
+    .right-icons {
+        display: flex;
+        gap: $padding-xs;
+    }
+}
+
+// Navigateur de pages (points)
+.dots {
+    display: flex;
+    justify-content: center;
+    gap: $padding-xs;
+    margin-top: auto;
+    margin-bottom: $padding-sm;
+    
+    .dot {
+        width: $dot-size;
+        height: $dot-size;
+        background-color: rgba($white, 0.5);
+        border-radius: $border-radius-round;
+        
+        &.active {
+            background-color: $white;
+        }
+    }
+}

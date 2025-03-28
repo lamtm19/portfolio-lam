@@ -1,0 +1,25 @@
+// Style du dock
+.dock {
+    position: absolute;
+    bottom: $padding-lg;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba($white, $dock-opacity);
+    border-radius: $padding-xl;
+    padding: $padding-sm;
+    display: flex;
+    gap: $padding-xl;
+    z-index: $z-index-dock;
+    backdrop-filter: blur(10px);
+    
+    .app {
+        .app-icon {
+            margin-bottom: 0;
+            box-shadow: 0 2px 8px rgba($black, 0.2);
+            
+            &:active {
+                transform: scale(0.9);
+            }
+        }
+    }
+}

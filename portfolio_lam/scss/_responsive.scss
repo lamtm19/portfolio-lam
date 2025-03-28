@@ -1,0 +1,107 @@
+// Responsive design pour différentes tailles d'écran
+
+// Téléphones petits (moins de 375px)
+@media (max-width: 374px) {
+    .app-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: $padding-sm;
+    }
+    
+    .app-icon {
+        width: calc(#{$app-icon-size} - 15px);
+        height: calc(#{$app-icon-size} - 15px);
+    }
+    
+    .app-name {
+        font-size: $font-size-xs;
+    }
+    
+    .dock {
+        gap: $padding-md;
+        padding: $padding-xs;
+    }
+    
+    .folder-popup {
+        width: 250px;
+        min-height: 250px;
+    }
+}
+
+// Téléphones moyens (375px à 767px)
+@media (min-width: 375px) and (max-width: 767px) {
+    .app-grid {
+        gap: $padding-md;
+    }
+}
+
+// Tablettes (768px à 1023px)
+@media (min-width: 768px) and (max-width: 1023px) {
+    .app-grid {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: $padding-lg;
+        padding: $padding-lg $padding-xl;
+    }
+    
+    .app-icon {
+        width: calc(#{$app-icon-size} + 10px);
+        height: calc(#{$app-icon-size} + 10px);
+    }
+    
+    .app-name {
+        font-size: $font-size-md;
+    }
+    
+    .folder-popup {
+        width: 350px;
+        min-height: 350px;
+    }
+}
+
+// Ordinateurs (1024px et plus)
+@media (min-width: 1024px) {
+    .app-grid {
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: $padding-xl;
+        padding: $padding-xl;
+    }
+    
+    .app-icon {
+        width: calc(#{$app-icon-size} + 20px);
+        height: calc(#{$app-icon-size} + 20px);
+    }
+    
+    .app-name {
+        font-size: $font-size-md;
+    }
+    
+    .dock {
+        padding: $padding-md;
+        gap: $padding-xl;
+    }
+    
+    .folder-popup {
+        width: 400px;
+        min-height: 400px;
+    }
+}
+
+// Mode sombre (préférence utilisateur)
+@media (prefers-color-scheme: dark) {
+    .popup {
+        background-color: rgba($gray-dark, $popup-opacity);
+        
+        h2 {
+            color: $white;
+        }
+    }
+    
+    .folder-popup {
+        background-color: rgba($gray-dark, $popup-opacity);
+        
+        .folder-app-name {
+            color: $white;
+        }
+    }
+}

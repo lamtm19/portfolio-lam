@@ -1,0 +1,195 @@
+body {
+    font-family: 'Bebas Neue', sans-serif;
+    color: #000000;
+    background-color: #010262;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.titre {
+    color: #007BFF;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 70px;
+    text-shadow: 
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    1px 1px 0 white;
+}
+
+
+
+
+.search-bar{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+
+#search-destination {
+    width: 150px;
+    height:35px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    padding: 5px ;
+}
+
+.search-bar button {
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+.search-bar button img {
+    width: 20px;
+    height: 20px;
+}
+
+
+
+
+
+
+.filtres {
+    display: flex;
+    flex-direction: column; /* Arrange les éléments en colonne */
+    align-items: flex-start; /* Aligne les éléments au début du conteneur */
+    margin-inline:5% ;
+    padding: 20px;
+    background-color: #007BFF;
+    border-radius: 8px;
+}
+
+.filtres h2{
+    margin: 0;
+    padding-bottom:10px;
+}
+
+.filtres div {
+    display: flex;
+    justify-content:baseline;
+}
+
+
+
+section button {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    width: 100%;
+    margin: 4px;
+}
+
+
+main{
+    display: flex;
+    flex-direction: row;
+}
+
+.tarif {
+    margin: 5%;
+    padding: 20px;
+    width: 100%;
+    background-color: #007BFF;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tarif h2{
+    margin: 0%;
+    padding-bottom: 10px;
+}
+
+.tarif .articles {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;    
+}
+
+
+article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+}
+
+article img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    max-width: 400px;
+}
+
+article h3 {
+    margin:10px
+}
+
+article p {
+    margin: 0;
+}
+
+
+
+
+footer {
+    background-color: #007BFF;
+    color: #ffffff;
+    padding: 20px;
+    margin-top: 75px; 
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; 
+}
+
+
+
+.footer-info h3, .footer-social h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.footer-info p {
+    margin: 5px;
+}
+
+.footer-social {
+    text-align: center;
+}
+
+.footer-social a {
+    display: inline-block;
+    margin: 10px
+}
+
+.footer-social img {
+    width: 30px;
+    height: 30px;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #ffffff; 
+    margin-top: 20px;
+}
